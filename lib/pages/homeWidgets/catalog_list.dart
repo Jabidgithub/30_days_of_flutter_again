@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/home_detail_page.dart';
 import 'package:flutter_application_1/utils/routes.dart';
+import 'package:flutter_application_1/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../models/catalog.dart';
-import '../themes.dart';
 import '../../pages/home_page.dart';
 import 'catalog_image.dart';
 
@@ -63,7 +63,7 @@ class CatalogItem extends StatelessWidget {
                 "\$${catalog.price}".text.bold.xl.make(),
                 ElevatedButton(
                   onPressed: () {},
-                  child: "Buy".text.make(),
+                  child: "Add to cart".text.make(),
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(
                         MyTheme.darkBluishColor,

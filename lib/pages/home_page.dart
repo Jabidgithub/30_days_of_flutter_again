@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/models/catalog.dart';
+import 'package:flutter_application_1/pages/homeWidgets/catalog_list.dart';
+import 'package:flutter_application_1/utils/routes.dart';
 import 'package:flutter_application_1/widgets/themes.dart';
 import '../widgets/drawer.dart';
 import '../widgets/item_widget.dart';
@@ -8,7 +11,6 @@ import 'dart:convert';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../widgets/home_widgets/catalog_header.dart';
-import '../widgets/home_widgets/catalog_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -44,6 +46,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyTheme.creamColor,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, MyRoutes.cartRoute);
+        },
+        backgroundColor: MyTheme.darkBluishColor,
+        child: Icon(CupertinoIcons.cart),
+      ),
       body: SafeArea(
         child: Container(
           padding: Vx.m32,
@@ -51,7 +60,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               CatalogHeader(),
               if (CatalogModel.items != null && CatalogModel.items!.isNotEmpty)
-                CatalogList().py16().expand()
+                CatalogList().p16().expand()
               else
                 CircularProgressIndicator().centered().expand(),
             ],
